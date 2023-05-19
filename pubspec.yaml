@@ -44,9 +44,9 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "images/newspaper.png"
+  image_path: "assets/images/newspaper.png"
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "images/newspaper.png"
+  adaptive_icon_foreground: "assets/images/newspaper.png"
   min_sdk_android: 21
 
   # The "flutter_lints" package below contains a set of recommended lints to
