@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  //Fetch the current theme
+  /// Fetch the current theme
   void getCurrentAppTheme() async {
     themeChangeProvider.setDarkTheme =
         await themeChangeProvider.darkThemePreferences.getTheme();
