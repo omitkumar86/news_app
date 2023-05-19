@@ -5,13 +5,12 @@ import 'package:news_app/widgets/vertical_spacing.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
 import '../services/global_methods.dart';
 import '../services/utils.dart';
 
 class NewsDetailsWebView extends StatefulWidget {
-    NewsDetailsWebView({Key? key,this.url}) : super(key: key);
-  final String ?url;
+  NewsDetailsWebView({Key? key, this.url}) : super(key: key);
+  final String? url;
 
   @override
   State<NewsDetailsWebView> createState() => _NewsDetailsWebViewState();
@@ -20,7 +19,6 @@ class NewsDetailsWebView extends StatefulWidget {
 class _NewsDetailsWebViewState extends State<NewsDetailsWebView> {
   late WebViewController _webViewController;
   double _progress = 0.0;
- // final url = "https://techcrunch.com/2022/06/17/marc-lores-food-delivery-startup-wonder-raises-350m-3-5b-valuation/";
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).getColor;

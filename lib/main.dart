@@ -1,18 +1,10 @@
-//Packages
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import 'package:news_app/inner_screens/blog_details.dart';
 import 'package:news_app/providers/news_provider.dart';
 import 'package:provider/provider.dart';
-
-
-//Screens
 import 'screens/home_screen.dart';
-
-//Consts
 import 'consts/theme_data.dart';
-
-//Providers
 import 'providers/theme_provider.dart';
 
 void main() {

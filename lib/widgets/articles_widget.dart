@@ -5,15 +5,11 @@ import 'package:news_app/model/news_model.dart';
 import 'package:news_app/widgets/vertical_spacing.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import '../consts/styles.dart';
 import '../inner_screens/blog_details.dart';
 import '../services/utils.dart';
 
 class ArticlesWidget extends StatelessWidget {
-  /* ArticlesWidget({Key? key,this.article}) : super(key: key);
-
-final Article ?article;*/
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
@@ -25,8 +21,6 @@ final Article ?article;*/
         color: Theme.of(context).cardColor,
         child: GestureDetector(
           onTap: () {
-          //  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewsDetailsScreen(date: newsModelProvider.publishedAt.toString(),)));
-            // Navigate to the in app details screen
             Navigator.pushNamed(context, NewsDetailsScreen.routeName,
                 arguments: newsModelProvider.publishedAt);
           },

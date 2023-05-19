@@ -3,11 +3,11 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:intl/intl.dart';
 
 class GlobalMethods {
-
-  static String formattedDateText(String publishAt){
-    final parseData=DateTime.parse(publishAt);
-    String formattedDate=DateFormat("yyyy-MM-dd hh:mm:ss").format(parseData);
- DateTime publishedDate=DateFormat("yyyy-MM-dd hh:mm:ss").parse(formattedDate);
+  static String formattedDateText(String publishAt) {
+    final parseData = DateTime.parse(publishAt);
+    String formattedDate = DateFormat("yyyy-MM-dd hh:mm:ss").format(parseData);
+    DateTime publishedDate =
+        DateFormat("yyyy-MM-dd hh:mm:ss").parse(formattedDate);
     return "${publishedDate.day}/${publishedDate.month}/${publishedDate.year} on ${publishedDate.hour}:${publishedDate.minute}";
   }
 

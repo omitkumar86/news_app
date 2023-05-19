@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/model/news_model.dart';
 import 'package:page_transition/page_transition.dart';
-
 import '../inner_screens/blog_details.dart';
 import '../inner_screens/news_details_webview.dart';
 import '../services/utils.dart';
 
 class TopTrendingWidget extends StatelessWidget {
-  TopTrendingWidget({Key? key,this.article}) : super(key: key);
-  final Article ?article;
+  TopTrendingWidget({Key? key, this.article}) : super(key: key);
+  final Article? article;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +33,7 @@ class TopTrendingWidget extends StatelessWidget {
                 child: FancyShimmerImage(
                   boxFit: BoxFit.fill,
                   errorWidget: Image.asset('assets/images/empty_image.png'),
-                  imageUrl:
-                      "${article!.urlToImage}",
+                  imageUrl: "${article!.urlToImage}",
                   height: size.height * 0.33,
                   width: double.infinity,
                 ),
@@ -55,7 +53,7 @@ class TopTrendingWidget extends StatelessWidget {
                           context,
                           PageTransition(
                               type: PageTransitionType.rightToLeft,
-                              child:   NewsDetailsWebView(),
+                              child: NewsDetailsWebView(),
                               inheritTheme: true,
                               ctx: context),
                         );

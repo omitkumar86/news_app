@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app/services/utils.dart';
 import 'package:news_app/widgets/vertical_spacing.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../consts/vars.dart';
 
 class LoadingWidget extends StatefulWidget {

@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/inner_screens/bookmarks_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/theme_provider.dart';
 import 'vertical_spacing.dart';
 
@@ -21,7 +20,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
- 
+
     return Drawer(
       child: Material(
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -61,7 +60,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               label: "Bookmark",
               icon: IconlyBold.bookmark,
               fct: () {
-                  Navigator.push(
+                Navigator.push(
                   context,
                   PageTransition(
                       type: PageTransitionType.rightToLeft,

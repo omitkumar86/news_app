@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../services/utils.dart';
 
 class EmptyNewsWidget extends StatelessWidget {
@@ -14,7 +13,6 @@ class EmptyNewsWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-     //   mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
             padding: const EdgeInsets.all(18.0),

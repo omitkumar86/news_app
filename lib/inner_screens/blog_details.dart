@@ -7,7 +7,6 @@ import 'package:news_app/services/global_methods.dart';
 import 'package:news_app/widgets/vertical_spacing.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '../consts/styles.dart';
 import '../services/utils.dart';
 
@@ -35,7 +34,7 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         centerTitle: true,
         title: Text(
-          "${currentNews.source!.name }",
+          "${currentNews.source!.name}",
           textAlign: TextAlign.center,
           style: TextStyle(color: color),
         ),
