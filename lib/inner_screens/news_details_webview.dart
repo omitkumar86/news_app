@@ -1,12 +1,16 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:news_app/widgets/vertical_spacing.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../consts/styles.dart';
 import '../services/global_methods.dart';
 import '../services/utils.dart';
+import '../widgets/no_internet_connection_widget.dart';
 
 class NewsDetailsWebView extends StatefulWidget {
   NewsDetailsWebView({Key? key, this.url}) : super(key: key);
@@ -58,29 +62,40 @@ class _NewsDetailsWebViewState extends State<NewsDetailsWebView> {
                 ),
               ),
             ]),
-        body: Column(
-          children: [
-            LinearProgressIndicator(
-              value: _progress,
-              color: _progress == 1.0 ? Colors.transparent : Colors.blue,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            ),
-            Expanded(
-              child: WebView(
-                initialUrl: widget.url,
-                zoomEnabled: true,
-                onProgress: (progress) {
-                  setState(() {
-                    _progress = progress / 100;
-                  });
-                },
-                onWebViewCreated: (controller) {
-                  _webViewController = controller;
-                },
+        body: Provider.of<InternetConnectionStatus>(context) ==
+                InternetConnectionStatus.disconnected
+            ? NoInternetConnectionWidget(onPressed: () {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("No internet connection!",
+                      style:
+                          myStyleMontserrat(15, Colors.white, FontWeight.w500)),
+                  backgroundColor: Colors.red,
+                ));
+              })
+            : Column(
+                children: [
+                  LinearProgressIndicator(
+                    value: _progress,
+                    color: _progress == 1.0 ? Colors.transparent : Colors.blue,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                  Expanded(
+                    child: WebView(
+                      initialUrl: widget.url,
+                      zoomEnabled: true,
+                      onProgress: (progress) {
+                        setState(() {
+                          _progress = progress / 100;
+                        });
+                      },
+                      onWebViewCreated: (controller) {
+                        _webViewController = controller;
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

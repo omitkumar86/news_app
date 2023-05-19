@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:news_app/consts/vars.dart';
 import 'package:news_app/inner_screens/search_screen.dart';
 import 'package:news_app/model/news_model.dart';
@@ -13,7 +14,9 @@ import 'package:news_app/widgets/top_tending.dart';
 import 'package:news_app/widgets/vertical_spacing.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import '../consts/styles.dart';
 import '../widgets/articles_widget.dart';
+import '../widgets/no_internet_connection_widget.dart';
 import '../widgets/tabs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -65,7 +68,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         drawer: const DrawerWidget(),
-        body: SingleChildScrollView(
+        body: Provider.of<InternetConnectionStatus>(context) ==
+            InternetConnectionStatus.disconnected ?
+        NoInternetConnectionWidget(
+            onPressed: (){
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("No internet connection!", style: myStyleMontserrat(15, Colors.white, FontWeight.w500)),
+                backgroundColor: Colors.red,
+              ));
+            }
+        ):SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(children: [

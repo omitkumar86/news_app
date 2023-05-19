@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:news_app/inner_screens/blog_details.dart';
 import 'package:news_app/providers/news_provider.dart';
 import 'package:provider/provider.dart';
@@ -47,14 +48,20 @@ class _MyAppState extends State<MyApp> {
         }),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeChangeProvider, ch) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'News app',
-          theme: Styles.themeData(themeChangeProvider.getDarkTheme, context),
-          home: const HomeScreen(),
-          routes: {
-            NewsDetailsScreen.routeName: (ctx) =>   NewsDetailsScreen(),
+        return StreamProvider<InternetConnectionStatus>(
+          initialData: InternetConnectionStatus.connected,
+          create: (_) {
+            return InternetConnectionChecker().onStatusChange;
           },
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'News app',
+            theme: Styles.themeData(themeChangeProvider.getDarkTheme, context),
+            home: const HomeScreen(),
+            routes: {
+              NewsDetailsScreen.routeName: (ctx) =>   NewsDetailsScreen(),
+            },
+          ),
         );
       }),
     );
